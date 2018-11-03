@@ -347,10 +347,10 @@ func (c *Client) init(o *Options) error {
 	} else {
 		// Even digest forms of authentication are unsafe if we do not know that the host
 		// we are talking to is the actual server, and not a man in the middle playing
-		// proxy.
-		if !c.IsEncrypted() && !o.InsecureAllowUnencryptedAuth {
-			return errors.New("refusing to authenticate over unencrypted TCP connection")
-		}
+		// proxy. But this choice is for the dev. I allow this option.
+		//if !c.IsEncrypted() && !o.InsecureAllowUnencryptedAuth {
+		//	return errors.New("refusing to authenticate over unencrypted TCP connection")
+		//}
 
 		mechanism := ""
 		for _, m := range f.Mechanisms.Mechanism {
